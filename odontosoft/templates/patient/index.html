@@ -1,10 +1,64 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
+{% extends "base/base.html" %}
 
-  </body>
-</html>
+{% block title %}Pacientes{% endblock title %}
+
+
+{% block content %}
+
+<div class="content">
+    <div class="row">
+        <div class="col m1"></div>
+        <div class="col s12 m10">
+            <div class="card cyan darken-1 z-depth-5">
+                <div class="card-content">
+                    <h4>LISTA DE PACIENTES</h4>
+                    <table class="responsive-table striped highlight">
+                        <thead class="light-blue darken-4 head-table">
+                        <tr>
+                            <th>ID</th>
+                            <th>Fec. Ingr.</th>
+                            <th>Nom. Ape.</th>
+                            <th>Edad</th>
+                            <th>Sexo</th>
+                            <th>Fec. Nac.</th>
+                            <th class="col-small">Diabts.</th>
+                            <th class="col-small">Hiper.</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for p in patients %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td>{{ p.dateInit | date:"d/m/Y" }}</td>
+                            <td>{{ p.nomApe }}</td>
+                            <td>{{ p.age }}</td>
+                            <td>{{ p.sex }}</td>
+                            <td>{{ p.dateNac | date:"d/m/Y" }}</td>
+                            <td class="col-small">
+                                {% if p.diabettes %}
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                {% else %}
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                {% endif %}
+                            </td><td class="col-small">
+                                {% if p.hipertension %}
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                {% else %}
+                                    <i class="fa fa-times" aria-hidden="true"></i>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div
+</div>
+
+{% endblock content %}
+
+{% block footer %}
+{% endblock footer %}

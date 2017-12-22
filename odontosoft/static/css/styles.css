@@ -1,0 +1,19 @@
+body{
+    background-color: #b3e5fc;
+}
+
+.head-table{
+    color: white;
+}
+
+.col-small{
+    text-align: center;
+}
+
+.content{
+    padding-top: 12px;
+}
+
+.text-accent{
+    color: white;
+}
